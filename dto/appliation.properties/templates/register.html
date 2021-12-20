@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cadastro das músicas dos artistas consagrados-Sucesso</title>
+    <link rel="stylesheet" th:href="@{css/style.css}">
+  </head>
+  <p>Deu tudo certo!</p>
+  <body>
+    <main>
+    <form method="post"th:action="@{/musics}">
+     th:object="${objMusic}">
+<label>Nome da  música:</label>
+<input type="text"th:field="*{name}"required/>
+<label>Nome do cantor do estilo musical</label>
+<input type="text"th:field="*{singer}"required/>
+<label>Nome do estilo musical</label>
+<input type="text"th:field="*{genre}"required>
+<label>Gênero da faixa musical</label>
+<select th:field = "*{genre}">
+  <option>
+    th: each = "gêneros:"{T(br.com.josseanevendetti.playlist.api.model.Genre).values()}" 
+    th: value = "$ {genre}" 
+    th: text = "$ {genre}"
+  </option>
+  </select>
+  
+  <div>
+    <button type = "submit">Cadastrar música</button>
+    <button type = "submit">Limpar todos os dados </button>
+    
+  </div>
+     </form >
+    </main>
+  </body>
+</html>
